@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% block content %}
+
+<style>
+
+.login-container{
+
+max-width:500px;
+
+margin:30px auto;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(15px);
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 0 30px rgba(14,165,233,.4);
+
+}
+
+.login-header{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+.login-header h1{
+
+font-size:32px;
+
+color:#7dd3fc;
+
+margin-bottom:10px;
+
+}
+
+.login-header p{
+
+color:#ddd;
+
+}
+
+.form-group{
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+}
+
+.form-group input{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+}
+
+.form-group input:focus{
+
+outline:none;
+
+box-shadow:0 0 10px #38bdf8;
+
+}
+
+.remember{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+font-size:14px;
+
+}
+
+.remember a{
+
+color:#7dd3fc;
+
+text-decoration:none;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#0ea5e9;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#0284c7;
+
+transform:translateY(-2px);
+
+}
+
+.footer{
+
+margin-top:25px;
+
+text-align:center;
+
+}
+
+.footer a{
+
+color:#7dd3fc;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+</style>
+
+<div class="login-container">
+
+<div class="login-header">
+
+<h1>🔐 Student Login</h1>
+
+<p>Cyber Security University Portal</p>
+
+</div>
+
+<form action="/login" method="POST">
+
+<div class="form-group">
+
+<label>Username</label>
+
+<input
+type="text"
+name="username"
+placeholder="Enter Username"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter Password"
+required>
+
+</div>
+
+<div class="remember">
+
+<label>
+<input type="checkbox">
+ Remember Me
+</label>
+
+<a href="#">Forgot Password?</a>
+
+</div>
+
+<button type="submit">
+
+Login
+
+</button>
+
+</form>
+
+<div class="footer">
+
+<p>
+
+Don't have an account?
+
+<a href="/register">Register</a>
+
+</p>
+
+</div>
+
+</div>
+
+{% endblock %}

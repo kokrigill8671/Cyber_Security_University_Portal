@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cyber Security University Portal - Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(rgba(5,35,60,.82),rgba(5,35,60,.82)),
+url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80");
+
+background-size:cover;
+background-position:center;
+color:white;
+
+}
+
+.header{
+
+height:70px;
+background:#0ea5e9;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 30px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+
+}
+
+.header h2{
+font-size:26px;
+}
+
+.header a{
+
+text-decoration:none;
+color:white;
+font-weight:600;
+
+background:#0284c7;
+padding:10px 18px;
+border-radius:8px;
+
+}
+
+.container{
+
+display:flex;
+
+}
+
+.sidebar{
+
+width:250px;
+height:calc(100vh - 70px);
+
+background:#082f49;
+
+padding-top:20px;
+
+}
+
+.sidebar a{
+
+display:block;
+
+color:white;
+
+text-decoration:none;
+
+padding:16px 25px;
+
+transition:.3s;
+
+font-size:17px;
+
+}
+
+.sidebar a:hover{
+
+background:#0ea5e9;
+
+padding-left:35px;
+
+}
+
+.main{
+
+flex:1;
+
+padding:30px;
+
+}
+
+.welcome{
+
+background:rgba(255,255,255,.15);
+
+padding:25px;
+
+border-radius:15px;
+
+backdrop-filter:blur(12px);
+
+margin-bottom:25px;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:15px;
+
+text-align:center;
+
+transition:.3s;
+
+box-shadow:0 0 20px rgba(14,165,233,.3);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 35px rgba(14,165,233,.7);
+
+}
+
+.card h3{
+
+font-size:22px;
+
+margin-bottom:12px;
+
+}
+
+.card p{
+
+font-size:16px;
+
+}
+
+.footer{
+
+margin-top:40px;
+
+text-align:center;
+
+color:#ddd;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>🛡 Cyber Security University Portal</h2>
+
+<a href="/">Logout</a>
+
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+
+<a href="/dashboard">🏠 Dashboard</a>
+
+<a href="/profile">👤 Profile</a>
+
+<a href="/courses">📚 Courses</a>
+
+<a href="/attendance">📅 Attendance</a>
+
+<a href="/results">🎓 Results</a>
+
+<a href="/notices">📢 Notices</a>
+
+<a href="/contact">📞 Contact</a>
+
+</div>
+
+<div class="main">
+
+<div class="welcome">
+
+<h1>Welcome, Student 👋</h1>
+
+<p>
+
+Manage your academic information securely from one place.
+
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>📚 Courses</h3>
+
+<p>View enrolled courses and study material.</p>
+
+</div>
+
+<div class="card">
+
+<h3>📅 Attendance</h3>
+
+<p>Check your attendance records.</p>
+
+</div>
+
+<div class="card">
+
+<h3>🎓 Results</h3>
+
+<p>View semester results and grades.</p>
+
+</div>
+
+<div class="card">
+
+<h3>📢 Notices</h3>
+
+<p>Latest university announcements.</p>
+
+</div>
+
+<div class="card">
+
+<h3>👤 Profile</h3>
+
+<p>Update your personal information.</p>
+
+</div>
+
+<div class="card">
+
+<h3>🔐 Cyber Security</h3>
+
+<p>Security alerts and login history.</p>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+© 2026 Cyber Security University Portal
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

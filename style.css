@@ -1,0 +1,245 @@
+/* ==========================================
+   Cyber Security University Portal
+   Global Style Sheet
+   Sky Blue Theme
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:linear-gradient(135deg,#031b34,#0b4f7d,#38bdf8);
+
+    min-height:100vh;
+
+    color:#ffffff;
+
+}
+
+/* Header */
+
+.header{
+
+    height:70px;
+
+    background:#0ea5e9;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+
+}
+
+.header h1,
+.header h2{
+
+    color:white;
+
+}
+
+/* Sidebar */
+
+.sidebar{
+
+    width:250px;
+
+    min-height:calc(100vh - 70px);
+
+    background:#082f49;
+
+}
+
+.sidebar a{
+
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 22px;
+
+    transition:.3s;
+
+}
+
+.sidebar a:hover{
+
+    background:#0ea5e9;
+
+    padding-left:30px;
+
+}
+
+/* Main Content */
+
+.main{
+
+    flex:1;
+
+    padding:30px;
+
+}
+
+/* Cards */
+
+.card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 0 20px rgba(14,165,233,.35);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 30px rgba(14,165,233,.6);
+
+}
+
+/* Buttons */
+
+.btn{
+
+    display:inline-block;
+
+    background:#0ea5e9;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#0284c7;
+
+}
+
+/* Form Controls */
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+    box-shadow:0 0 10px #38bdf8;
+
+}
+
+/* Tables */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+th{
+
+    background:#0ea5e9;
+
+    padding:15px;
+
+}
+
+td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+tr:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* Footer */
+
+.footer{
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#ddd;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.sidebar{
+
+    width:100%;
+
+}
+
+.main{
+
+    padding:20px;
+
+}
+
+}

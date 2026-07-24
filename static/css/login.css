@@ -1,0 +1,201 @@
+/* ==============================
+   Cyber Security Login Page
+   Sky Blue Theme
+============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:linear-gradient(rgba(5,35,60,.75),rgba(5,35,60,.75)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.login-container{
+
+    width:420px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:40px;
+
+    box-shadow:0 0 35px rgba(14,165,233,.45);
+
+    color:white;
+
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+}
+
+.login-container h1{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.login-container p{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    color:#ddd;
+
+}
+
+.form-group{
+
+    margin-bottom:20px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.form-group input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+.form-group input:focus{
+
+    outline:none;
+
+    box-shadow:0 0 12px #38bdf8;
+
+}
+
+.options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+
+}
+
+.options a{
+
+    color:#7dd3fc;
+
+    text-decoration:none;
+
+}
+
+.login-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#0ea5e9;
+
+    border:none;
+
+    border-radius:10px;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:#0284c7;
+
+}
+
+.register{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+.register a{
+
+    color:#7dd3fc;
+
+    text-decoration:none;
+
+}
+
+.footer{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#ddd;
+
+    font-size:14px;
+
+}
+
+@media(max-width:500px){
+
+.login-container{
+
+    width:95%;
+
+    padding:25px;
+
+}
+
+}

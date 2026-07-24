@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance{% endblock %}
+
+{% block content %}
+
+<style>
+
+h1{
+margin-bottom:25px;
+}
+
+.summary{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(10px);
+
+padding:25px;
+
+border-radius:15px;
+
+text-align:center;
+
+box-shadow:0 0 20px rgba(14,165,233,.35);
+
+}
+
+.card h2{
+
+font-size:36px;
+
+color:#7dd3fc;
+
+margin-bottom:10px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+background:rgba(255,255,255,.10);
+
+backdrop-filter:blur(10px);
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+th{
+
+background:#0ea5e9;
+
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.present{
+
+color:#22c55e;
+
+font-weight:bold;
+
+}
+
+.absent{
+
+color:#ef4444;
+
+font-weight:bold;
+
+}
+
+.percentage{
+
+color:#facc15;
+
+font-weight:bold;
+
+}
+
+tr:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+</style>
+
+<h1>📅 Student Attendance</h1>
+
+<div class="summary">
+
+<div class="card">
+<h2>120</h2>
+<p>Total Classes</p>
+</div>
+
+<div class="card">
+<h2>110</h2>
+<p>Present</p>
+</div>
+
+<div class="card">
+<h2>10</h2>
+<p>Absent</p>
+</div>
+
+<div class="card">
+<h2>91.7%</h2>
+<p>Attendance</p>
+</div>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Course</th>
+
+<th>Total Classes</th>
+
+<th>Present</th>
+
+<th>Absent</th>
+
+<th>Percentage</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>Network Security</td>
+
+<td>30</td>
+
+<td>28</td>
+
+<td>2</td>
+
+<td class="percentage">93%</td>
+
+<td class="present">Excellent</td>
+
+</tr>
+
+<tr>
+
+<td>Ethical Hacking</td>
+
+<td>25</td>
+
+<td>22</td>
+
+<td>3</td>
+
+<td class="percentage">88%</td>
+
+<td class="present">Good</td>
+
+</tr>
+
+<tr>
+
+<td>Digital Forensics</td>
+
+<td>20</td>
+
+<td>18</td>
+
+<td>2</td>
+
+<td class="percentage">90%</td>
+
+<td class="present">Excellent</td>
+
+</tr>
+
+<tr>
+
+<td>Cloud Security</td>
+
+<td>25</td>
+
+<td>21</td>
+
+<td>4</td>
+
+<td class="percentage">84%</td>
+
+<td class="present">Good</td>
+
+</tr>
+
+<tr>
+
+<td>Cryptography</td>
+
+<td>20</td>
+
+<td>21</td>
+
+<td>1</td>
+
+<td class="percentage">95%</td>
+
+<td class="present">Excellent</td>
+
+</tr>
+
+</table>
+
+{% endblock %}

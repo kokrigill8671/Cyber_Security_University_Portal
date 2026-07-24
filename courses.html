@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+
+<style>
+
+.page-title{
+margin-bottom:30px;
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:25px;
+
+}
+
+.course-card{
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(12px);
+
+border-radius:18px;
+
+padding:25px;
+
+box-shadow:0 0 20px rgba(14,165,233,.35);
+
+transition:.3s;
+
+}
+
+.course-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 30px rgba(14,165,233,.6);
+
+}
+
+.course-icon{
+
+font-size:45px;
+
+margin-bottom:15px;
+
+}
+
+.course-card h2{
+
+margin-bottom:12px;
+
+color:#7dd3fc;
+
+}
+
+.course-card p{
+
+line-height:1.8;
+
+margin-bottom:15px;
+
+}
+
+.details{
+
+margin-top:15px;
+
+}
+
+.details p{
+
+margin:6px 0;
+
+}
+
+.progress{
+
+height:10px;
+
+background:#d1d5db;
+
+border-radius:10px;
+
+margin-top:15px;
+
+overflow:hidden;
+
+}
+
+.progress span{
+
+display:block;
+
+height:100%;
+
+background:#0ea5e9;
+
+}
+
+.button{
+
+display:inline-block;
+
+margin-top:18px;
+
+padding:10px 18px;
+
+background:#0ea5e9;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:8px;
+
+transition:.3s;
+
+}
+
+.button:hover{
+
+background:#0284c7;
+
+}
+
+</style>
+
+<h1 class="page-title">📚 My Courses</h1>
+
+<div class="cards">
+
+<div class="course-card">
+
+<div class="course-icon">🛡️</div>
+
+<h2>Network Security</h2>
+
+<p>Learn network defense, firewalls, VPNs, IDS/IPS and secure communication.</p>
+
+<div class="details">
+<p><strong>Faculty:</strong> Dr. Sharma</p>
+<p><strong>Semester:</strong> II</p>
+<p><strong>Credits:</strong> 4</p>
+</div>
+
+<div class="progress">
+<span style="width:85%;"></span>
+</div>
+
+<a href="#" class="button">View Course</a>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-icon">💻</div>
+
+<h2>Ethical Hacking</h2>
+
+<p>Study penetration testing, vulnerability assessment and ethical hacking methodologies.</p>
+
+<div class="details">
+<p><strong>Faculty:</strong> Prof. Singh</p>
+<p><strong>Semester:</strong> II</p>
+<p><strong>Credits:</strong> 4</p>
+</div>
+
+<div class="progress">
+<span style="width:72%;"></span>
+</div>
+
+<a href="#" class="button">View Course</a>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-icon">☁️</div>
+
+<h2>Cloud Security</h2>
+
+<p>Understand cloud infrastructure, IAM, container security and cloud risk management.</p>
+
+<div class="details">
+<p><strong>Faculty:</strong> Dr. Gupta</p>
+<p><strong>Semester:</strong> II</p>
+<p><strong>Credits:</strong> 3</p>
+</div>
+
+<div class="progress">
+<span style="width:65%;"></span>
+</div>
+
+<a href="#" class="button">View Course</a>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-icon">🔐</div>
+
+<h2>Cryptography</h2>
+
+<p>Learn symmetric encryption, asymmetric encryption, hashing and digital signatures.</p>
+
+<div class="details">
+<p><strong>Faculty:</strong> Prof. Kaur</p>
+<p><strong>Semester:</strong> II</p>
+<p><strong>Credits:</strong> 3</p>
+</div>
+
+<div class="progress">
+<span style="width:90%;"></span>
+</div>
+
+<a href="#" class="button">View Course</a>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-icon">🧾</div>
+
+<h2>Digital Forensics</h2>
+
+<p>Analyze cyber incidents, recover digital evidence and investigate security breaches.</p>
+
+<div class="details">
+<p><strong>Faculty:</strong> Dr. Verma</p>
+<p><strong>Semester:</strong> II</p>
+<p><strong>Credits:</strong> 4</p>
+</div>
+
+<div class="progress">
+<span style="width:78%;"></span>
+</div>
+
+<a href="#" class="button">View Course</a>
+
+</div>
+
+<div class="course-card">
+
+<div class="course-icon">🤖</div>
+
+<h2>Cyber Threat Intelligence</h2>
+
+<p>Learn malware analysis, threat hunting, SIEM, SOC operations and incident response.</p>
+
+<div class="details">
+<p><strong>Faculty:</strong> Prof. Mehta</p>
+<p><strong>Semester:</strong> II</p>
+<p><strong>Credits:</strong> 4</p>
+</div>
+
+<div class="progress">
+<span style="width:82%;"></span>
+</div>
+
+<a href="#" class="button">View Course</a>
+
+</div>
+
+</div>
+
+{% endblock %}
