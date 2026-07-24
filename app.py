@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
@@ -204,5 +204,4 @@ def register():
 
 
 if __name__ == "__main__":
->>>>>>> 856e12cee79502ecf54a6c0b66c9d2720f3d7548
     app.run(debug=True)

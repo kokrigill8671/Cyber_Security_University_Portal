@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import os
 
 class Config:
@@ -11,7 +11,6 @@ class Config:
 
 =======
 import os
-
 class Config:
 
     SECRET_KEY = "CyberUniversityPortal2026"
@@ -20,5 +19,4 @@ class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
->>>>>>> 856e12cee79502ecf54a6c0b66c9d2720f3d7548
     UPLOAD_FOLDER = "static/uploads"
