@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect
 
+from flask import Flask, render_template, request, redirect, session
+from werkzeug.security import generate_password_hash, check_password_hash
+import os
+
 app = Flask(__name__)
+app.secret_key = "cyberportal_secret_key"
 
 # ---------------- Home ----------------
 @app.route("/")
@@ -97,8 +102,61 @@ def contact():
 # ---------------- Register ----------------
 @app.route("/register", methods=["GET", "POST"])
 def register():
+
+    if request.method == "POST":
+
+        first_name = request.form["first_name"]
+        last_name = request.form["last_name"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        student_id = request.form["student_id"]
+        course = request.form["course"]
+        semester = request.form["semester"]
+        dob = request.form["dob"]
+        address = request.form["address"]
+        username = request.form["username"]
+        password = request.form["password"]
+
+        hashed_password = generate_password_hash(password)
+
+        with open("users.txt", "a") as f:
+            f.write(
+                f"{first_name}|{last_name}|{email}|{phone}|{student_id}|{course}|{semester}|{dob}|{address}|{username}|{hashed_password}\n"
+            )
+
+        return redirect("/userlogin")
+
     return render_template("register.html")
 
+
+@app.route("/userlogin", methods=["GET", "POST"])
+def userlogin():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        if os.path.exists("users.txt"):
+
+            with open("users.txt", "r") as f:
+
+                for line in f:
+
+                    data = line.strip().split("|")
+
+                    saved_username = data[9]
+                    saved_password = data[10]
+
+                    if username == saved_username and check_password_hash(saved_password, password):
+
+                        session["user"] = username
+
+                        return redirect("/dashboard")
+
+        return "Invalid Username or Password"
+
+    return render_template("userlogin.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
