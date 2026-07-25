@@ -24,20 +24,33 @@ def login():
 
     if request.method == "POST":
 
+        role = request.form["role"]
         username = request.form["username"]
         password = request.form["password"]
 
-        if username == "admin" and password == "admin123":
-            session["admin"] = username
-            return redirect("/admin")
+        if role == "admin":
+
+            if username == "admin" and password == "admin123":
+                session["admin"] = username
+                return redirect("/admin")
+
+            return render_template(
+                "login.html",
+                error="Invalid Admin Username or Password"
+            )
+
+        student = Student.query.filter_by(username=username).first()
+
+        if student and student.check_password(password):
+            session["user"] = student.username
+            return redirect("/dashboard")
 
         return render_template(
             "login.html",
-            error="Invalid Admin Username or Password"
+            error="Invalid Student Username or Password"
         )
 
     return render_template("login.html")
-
 
 # ---------------- Dashboard ----------------
 @app.route("/dashboard")
