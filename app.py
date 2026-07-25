@@ -163,7 +163,7 @@ def students():
     if "admin" not in session:
         return redirect("/login")
 
-students = Student.query.all()
+    students = Student.query.all()
 
     output = """
     <html>
