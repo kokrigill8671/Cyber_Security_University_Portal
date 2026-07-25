@@ -15,7 +15,7 @@ with app.app_context():
 # ---------------- Home ----------------
 @app.route("/")
 def home():
-    return render_template("index.html")
+return redirect("/login")
 
 
 # ---------------- Login ----------------
@@ -28,8 +28,8 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
+        # Admin Login
         if role == "admin":
-
             if username == "admin" and password == "admin123":
                 session["admin"] = username
                 return redirect("/admin")
@@ -39,6 +39,7 @@ def login():
                 error="Invalid Admin Username or Password"
             )
 
+        # Student Login
         student = Student.query.filter_by(username=username).first()
 
         if student and student.check_password(password):
@@ -51,7 +52,6 @@ def login():
         )
 
     return render_template("login.html")
-
 # ---------------- Dashboard ----------------
 @app.route("/dashboard")
 def dashboard():
@@ -148,31 +148,10 @@ def register():
         db.session.add(student)
         db.session.commit()
 
-        return redirect("/userlogin")
+        return redirect("/login")
 
     return render_template("register.html")
 #gggg
-@app.route("/userlogin", methods=["GET", "POST"])
-def userlogin():
-
-    if request.method == "POST":
-
-        username = request.form["username"]
-        password = request.form["password"]
-
-        student = Student.query.filter_by(username=username).first()
-
-        if student and student.check_password(password):
-            session["user"] = student.username
-            return redirect("/dashboard")
-
-        return render_template(
-            "userlogin.html",
-            error="Invalid Username or Password"
-        )
-
-    return render_template("userlogin.html")
-
 
 @app.route("/students")
 def students():
