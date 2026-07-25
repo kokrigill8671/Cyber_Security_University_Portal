@@ -1,23 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from models import db, Student
-from datetime import datetime, timedelta
-from config import Config,db
-class Student(db.Model):
-    
-    id = db.Column(db.Integer, primary_key=True)
-    fullname = db.Column(db.String(100))
-    username = db.Column(db.String(100), unique=True)
-    email = db.Column(db.String(100), unique=True)
-    password = db.Column(db.String(100))
-
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def set_password(self, password):
-        self.password = password
-
-    def check_password(self, password):
-        return self.password == password
-
+from config import Config
+from datetime import datetime, timedelta   
 import os
 
 app = Flask(__name__)
