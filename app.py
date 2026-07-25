@@ -239,13 +239,20 @@ def students():
 
     return output
 
-
+# test
 @app.route("/testpassword")
 def testpassword():
     student = Student()
     student.set_password("123456")
     return student.password
+# delete data
+@app.route("/delete-all-students")
+def delete_all_students():
 
+    Student.query.delete()
+    db.session.commit()
+
+    return "All student records deleted successfully."
 
 if __name__ == "__main__":
     app.run(debug=True)
