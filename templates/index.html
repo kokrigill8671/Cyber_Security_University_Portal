@@ -208,23 +208,21 @@ transform:translateY(-2px);
 }
 
 .links{
-
-display:flex;
-
-justify-content:space-between;
-
-margin-top:18px;
-
+    display:flex;
+    justify-content:space-between;
+    margin-top:18px;
+    position:relative;
+    z-index:9999;
 }
 
 .links a{
-
-text-decoration:none;
-
-color:#0284c7;
-
-font-size:14px;
-
+    text-decoration:none;
+    color:#0284c7;
+    font-size:14px;
+    cursor:pointer;
+    pointer-events:auto;
+    position:relative;
+    z-index:10000;
 }
 
 .footer{
@@ -341,7 +339,7 @@ Login
 
 <a href="#">Forgot Password?</a>
 
-<a href="#">Register</a>
+<a href="{{ url_for('register') }}">Register</a>
 
 </div>
 
