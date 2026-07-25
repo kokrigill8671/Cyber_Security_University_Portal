@@ -1,22 +1,20 @@
 from flask import Flask, render_template, request, redirect
-
 from flask import Flask, render_template, request, redirect, session
-app.secret_key = "cyberportal_secret_key"
-
-MY_IP = "223.188.83.89"
-from config import Config
 from models import db, Student
-
+from config import Config
 import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
+app.secret_key = "cyberportal_secret_key"
+
+MY_IP = "223.188.83.89"
+
 db.init_app(app)
 
 with app.app_context():
     db.create_all()
-app.secret_key = "cyberportal_secret_key"
 
 # ---------------- Home ----------------
 @app.route("/")
@@ -162,15 +160,12 @@ def userlogin():
 @app.route("/students")
 def students():
 
+    if request.remote_addr != MY_IP:
+        return "Access Denied", 403
 
-    if request.remote_addr != MY_IP:    
-        return "Access Denied", 403        
+    students = Student.query.all()
 
-
-students = Student.query.all()
-
-
-output = """
+    output = """
     <html>
     <head>
         <title>Registered Students</title>
@@ -243,7 +238,6 @@ output = """
     """
 
     return output
-    
 
 # test
 @app.route("/testpassword")
@@ -251,14 +245,6 @@ def testpassword():
     student = Student()
     student.set_password("123456")
     return student.password
-"""
-@app.route("/delete-all-students")
-def delete_all_students():
 
-    Student.query.delete()
-    db.session.commit()
-
-    return "All student records deleted successfully."
-"""
 if __name__ == "__main__":
     app.run(debug=True)
