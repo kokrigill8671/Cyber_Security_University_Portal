@@ -3,7 +3,7 @@ from models import db, Student
 from config import Config
 from datetime import datetime, timedelta   
 import os
-
+created_at = db.Column(db.DateTime, default=datetime.utcnow)
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -141,7 +141,6 @@ def register():
 
     return render_template("register.html")
 #gggg
-from datetime import datetime, timedelta
 
 @app.route("/userlogin", methods=["GET", "POST"])
 def userlogin():

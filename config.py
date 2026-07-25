@@ -1,13 +1,7 @@
-
 import os
+from flask_sqlalchemy import SQLAlchemy
 
-class Config:
-
-    SECRET_KEY = "CyberUniversityPortal2026"
-
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
- 
-    import os
+db = SQLAlchemy()
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
