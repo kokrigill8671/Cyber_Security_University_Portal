@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from models import db, Student
-from config import Config
-from datetime import datetime, timedelta   
+from config import Config   
 import os
-created_at = db.Column(db.DateTime, default=datetime.utcnow)
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -142,32 +140,19 @@ def register():
     return render_template("register.html")
 #gggg
 
-@app.route("/userlogin", methods=["GET", "POST"])
-def userlogin():
+student = Student.query.filter_by(username=username).first()
 
-    if request.method == "POST":
+if student:
 
-        username = request.form["username"]
-        password = request.form["password"]
+    expiry_time = student.created_at + timedelta(hours=5)
 
-        student = Student.query.filter_by(username=username).first()
-
-        if student:
-
-            expiry_time = student.created_at + timedelta(hours=5)
-
-            if datetime.utcnow() > expiry_time:
-                db.session.delete(student)
-                db.session.commit()
-                return "Registration expired. Please register again."
-
-        if student and student.check_password(password):
-            session["user"] = student.username
-            return redirect("/dashboard")
-
-        return "Invalid Username or Password"
-
-    return render_template("userlogin.html")
+    if datetime.utcnow() > expiry_time:
+        db.session.delete(student)
+        db.session.commit()
+student = student.query.filter_by(username=username).first()
+if student and student.check_password(password):
+    session["user"] = student.username
+    return redirect("/dashboard")
 
 @app.route("/students")
 def students():
