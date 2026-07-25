@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect, session
 from models import db, Student
 from config import Config
+from datetime import datetime, timedelta
+from datetime import datetime
+
+created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
 import os
 
 app = Flask(__name__)
@@ -149,6 +154,14 @@ def userlogin():
         password = request.form["password"]
 
         student = Student.query.filter_by(username=username).first()
+
+if student:
+    expiry_time = student.created_at + timedelta(hours=5)
+
+    if datetime.utcnow() > expiry_time:
+        db.session.delete(student)
+        db.session.commit()
+        return "Registration expired. Please register again."
 
         if student and student.check_password(password):
             session["user"] = student.username
