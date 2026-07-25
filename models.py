@@ -1,25 +1,25 @@
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
-    first_name = db.Column(db.String(100), nullable=False)
-    last_name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    email = db.Column(db.String(120), unique=True)
     phone = db.Column(db.String(20))
-    student_id = db.Column(db.String(50), unique=True)
+    student_id = db.Column(db.String(50))
     course = db.Column(db.String(100))
-    semester = db.Column(db.String(20))
-    dob = db.Column(db.String(20))
+    semester = db.Column(db.String(50))
+    dob = db.Column(db.String(50))
     address = db.Column(db.Text)
-    username = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(255), nullable=False)
+
+    username = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(200))
 
     def set_password(self, password):
-        self.password = generate_password_hash(password)
+        self.password = password
 
     def check_password(self, password):
-        return check_password_hash(self.password, password)
+        return self.password == password

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 
 from flask import Flask, render_template, request, redirect, session
-from werkzeug.security import generate_password_hash, check_password_hash
 
 from config import Config
 from models import db, Student
