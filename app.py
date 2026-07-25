@@ -240,5 +240,12 @@ def students():
     return output
 
 
+@app.route("/testpassword")
+def testpassword():
+    student = Student()
+    student.set_password("123456")
+    return student.password
+
+
 if __name__ == "__main__":
     app.run(debug=True)
