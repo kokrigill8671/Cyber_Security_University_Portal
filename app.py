@@ -22,11 +22,14 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
-        # Demo Login
         if username == "admin" and password == "admin123":
+            session["admin"] = username
             return redirect("/admin")
 
-        return redirect("/dashboard")
+        return render_template(
+            "login.html",
+            error="Invalid Admin Username or Password"
+        )
 
     return render_template("login.html")
 
