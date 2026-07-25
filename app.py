@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect
 
 from flask import Flask, render_template, request, redirect, session
+app.secret_key = "cyberportal_secret_key"
 
+MY_IP = "223.188.83.89"
 from config import Config
 from models import db, Student
 
@@ -160,12 +162,15 @@ def userlogin():
 @app.route("/students")
 def students():
 
-    if "admin" not in session:
-        return redirect("/login")
 
-    students = Student.query.all()
+    if request.remote_addr != MY_IP:    
+        return "Access Denied", 403        
 
-    output = """
+
+students = Student.query.all()
+
+
+output = """
     <html>
     <head>
         <title>Registered Students</title>
