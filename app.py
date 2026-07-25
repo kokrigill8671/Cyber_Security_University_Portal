@@ -15,7 +15,7 @@ with app.app_context():
 # ---------------- Home ----------------
 @app.route("/")
 def home():
-return redirect("/login")
+   return redirect("/login")
 
 
 # ---------------- Login ----------------
