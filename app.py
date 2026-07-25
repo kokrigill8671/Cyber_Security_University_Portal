@@ -1,4 +1,3 @@
-from flask import Flask, render_template, request, redirect
 from flask import Flask, render_template, request, redirect, session
 from models import db, Student
 from config import Config
@@ -8,8 +7,6 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 app.secret_key = "cyberportal_secret_key"
-
-MY_IP = "223.188.83.89"
 
 db.init_app(app)
 
@@ -52,6 +49,10 @@ def dashboard():
 # ---------------- Admin ----------------
 @app.route("/admin")
 def admin():
+
+    if "admin" not in session:
+        return redirect("/login")
+
     return render_template("admin.html")
 
 
@@ -160,9 +161,9 @@ def userlogin():
 @app.route("/students")
 def students():
 
-    if request.remote_addr != MY_IP:
-        return "Access Denied", 403
-
+if "admin" not in session:
+    return redirect("/login")
+ 
     students = Student.query.all()
 
     output = """
