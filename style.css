@@ -226,6 +226,14 @@ tr:hover{
 
 }
 
+
+.register-link {
+    position: relative;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
 /* Responsive */
 
 @media(max-width:900px){
