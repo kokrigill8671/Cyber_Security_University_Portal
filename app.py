@@ -139,20 +139,27 @@ def register():
 
     return render_template("register.html")
 #gggg
+@app.route("/userlogin", methods=["GET", "POST"])
+def userlogin():
 
-student = Student.query.filter_by(username=username).first()
+    if request.method == "POST":
 
-if student:
+        username = request.form["username"]
+        password = request.form["password"]
 
-    expiry_time = student.created_at + timedelta(hours=5)
+        student = Student.query.filter_by(username=username).first()
 
-    if datetime.utcnow() > expiry_time:
-        db.session.delete(student)
-        db.session.commit()
-student = student.query.filter_by(username=username).first()
-if student and student.check_password(password):
-    session["user"] = student.username
-    return redirect("/dashboard")
+        if student and student.check_password(password):
+            session["user"] = student.username
+            return redirect("/dashboard")
+
+        return render_template(
+            "userlogin.html",
+            error="Invalid Username or Password"
+        )
+
+    return render_template("userlogin.html")
+
 
 @app.route("/students")
 def students():
