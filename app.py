@@ -158,5 +158,17 @@ def userlogin():
 
     return render_template("userlogin.html")
 
+@app.route("/students")
+def students():
+    students = Student.query.all()
+
+    output = ""
+
+    for s in students:
+        output += f"{s.id} | {s.first_name} | {s.username} | {s.email}<br>"
+
+    return output
+
+
 if __name__ == "__main__":
     app.run(debug=True)
