@@ -1,12 +1,9 @@
 from flask import Flask, render_template, request, redirect, session
 from models import db, Student
 from datetime import datetime, timedelta
-from config import Config
-
-from datetime import datetime
-from config import db
-
+from config import Config,db
 class Student(db.Model):
+    
     id = db.Column(db.Integer, primary_key=True)
     fullname = db.Column(db.String(100))
     username = db.Column(db.String(100), unique=True)
