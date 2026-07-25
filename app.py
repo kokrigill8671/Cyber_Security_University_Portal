@@ -2,9 +2,19 @@ from flask import Flask, render_template, request, redirect
 
 from flask import Flask, render_template, request, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from config import Config
+from models import db, Student
+
 import os
 
 app = Flask(__name__)
+app.config.from_object(Config)
+
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
 app.secret_key = "cyberportal_secret_key"
 
 # ---------------- Home ----------------
@@ -108,30 +118,28 @@ def register():
 
     if request.method == "POST":
 
-        first_name = request.form["first_name"]
-        last_name = request.form["last_name"]
-        email = request.form["email"]
-        phone = request.form["phone"]
-        student_id = request.form["student_id"]
-        course = request.form["course"]
-        semester = request.form["semester"]
-        dob = request.form["dob"]
-        address = request.form["address"]
-        username = request.form["username"]
-        password = request.form["password"]
+        student = Student(
+            first_name=request.form["first_name"],
+            last_name=request.form["last_name"],
+            email=request.form["email"],
+            phone=request.form["phone"],
+            student_id=request.form["student_id"],
+            course=request.form["course"],
+            semester=request.form["semester"],
+            dob=request.form["dob"],
+            address=request.form["address"],
+            username=request.form["username"]
+        )
 
-        hashed_password = generate_password_hash(password)
+        student.set_password(request.form["password"])
 
-        with open("users.txt", "a") as f:
-            f.write(
-                f"{first_name}|{last_name}|{email}|{phone}|{student_id}|{course}|{semester}|{dob}|{address}|{username}|{hashed_password}\n"
-            )
+        db.session.add(student)
+        db.session.commit()
 
         return redirect("/userlogin")
 
     return render_template("register.html")
-
-
+#gggg
 @app.route("/userlogin", methods=["GET", "POST"])
 def userlogin():
 
@@ -140,22 +148,11 @@ def userlogin():
         username = request.form["username"]
         password = request.form["password"]
 
-        if os.path.exists("users.txt"):
+        student = Student.query.filter_by(username=username).first()
 
-            with open("users.txt", "r") as f:
-
-                for line in f:
-
-                    data = line.strip().split("|")
-
-                    saved_username = data[9]
-                    saved_password = data[10]
-
-                    if username == saved_username and check_password_hash(saved_password, password):
-
-                        session["user"] = username
-
-                        return redirect("/dashboard")
+        if student and student.check_password(password):
+            session["user"] = student.username
+            return redirect("/dashboard")
 
         return "Invalid Username or Password"
 

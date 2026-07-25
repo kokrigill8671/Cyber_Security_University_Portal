@@ -1,1 +1,2 @@
 gurpreet|Singh|jatt@gmail.com|7710715395|72510031|MCA Data Science|Semester 4||vpo kokri kalan|jatt|scrypt:32768:8:1$ut7A6sXtgirfPaP8$03d9db2965dc07ea976099f931051d2c3e72cc7c9c2c14c6a80d8d808bd63ffc6b61409918598cf347a376b3315533b872c2d2c8b851031dfcf29b947bdad850
+hlo|sonalika|sonalika1234@gmail.com|4963|DI60|MCA Cyber Security|Semester 1||international|sonalika60|scrypt:32768:8:1$UL0LXBYTa4EqEuZR$efb70c69b611d9fb6e79a59ebfd416a78a44c26dba68b42bf4d6573d77ca1e43ad3b276c94afd0d67ab543436a8b3619044101e0ddba72cd0cb8f02e3fd5a0e7
