@@ -161,10 +161,11 @@ def userlogin():
 @app.route("/students")
 def students():
 
-if "admin" not in session:
-    return redirect("/login")
- 
+    if "admin" not in session:
+        return redirect("/login")
+
     students = Student.query.all()
+    
 
     output = """
     <html>
